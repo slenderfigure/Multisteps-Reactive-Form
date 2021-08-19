@@ -21,10 +21,10 @@ export type ValidatorErrorType = 'EMAIL' | 'EMAILTAKEN' | 'MINLENGTH' | 'MAXLENG
   'MIN' | 'MAX' | 'PATTERN' | 'PASSWORD' | 'PHONE' | 'REQUIRED' | 'USERNAMETAKEN';
 
 export type CustomValidator = {
-  validator: ValidatorFn | AsyncValidatorFn | null,
   type: ValidatorErrorType,
   message: string,
   async?: boolean,
+  validator?: ValidatorFn | AsyncValidatorFn | null,
   criteria?: string | number | RegExp
 }
 

@@ -4,9 +4,8 @@ import { AsyncValidatorFn, ValidatorFn, Validators } from "@angular/forms";
 import { Observable, of, throwError } from "rxjs";
 import { catchError, map, delay } from "rxjs/operators";
 import { environment as env } from 'src/environments/environment';
-import { CustomValidators } from "../components/multisteps-form/validators/custom-validators";
+import { CustomValidators } from "../components/multisteps-form/config/validators/custom-validators";
 import { CustomFormControl, CustomValidator } from "../models/custom-form-control";
-import { CONTROLS } from "../models/form-controls";
 
 export const RETRY_TOKEN = new HttpContextToken(() => 1);
 
@@ -29,31 +28,27 @@ export class ControlService {
 
   constructor(private http: HttpClient) { }
 
-  // getControls(): Observable<CustomFormControl[][] | []> {
-  //   return this.http.get<CustomFormControl[][]>(
-  //     env.API_URL,
-  //     { context: new HttpContext().set(RETRY_TOKEN, 3) }
-  //   )
-  //   .pipe(
-  //     map(controlList => {
-  //       return controlList.map(controls => {
-  //         return controls.map(control => {
-  //           if (control.validators) {
-  //             control.validators.forEach(validator => {
-  //               validator = this.getValidatorFn(validator);
-  //             });
-  //           }
-  //           return this.createCustomFormControl(control);
-  //         });
-  //       });
-  //     }),
-  //     delay(1600),
-  //     catchError(this.errorHandler)
-  //   );
-  // }
-
   getControls(): Observable<CustomFormControl[][] | []> {
-    return of(CONTROLS);
+    return this.http.get<CustomFormControl[][]>(
+      env.API_URL,
+      { context: new HttpContext().set(RETRY_TOKEN, 3) }
+    )
+    .pipe(
+      map(controlList => {
+        return controlList.map(controls => {
+          return controls.map(control => {
+            if (control.validators) {
+              control.validators.forEach(validator => {
+                validator = this.getValidatorFn(validator);
+              });
+            }
+            return this.createCustomFormControl(control);
+          });
+        });
+      }),
+      delay(1600),
+      catchError(this.errorHandler)
+    );
   }
 
   private createCustomFormControl(control: any): CustomFormControl {
