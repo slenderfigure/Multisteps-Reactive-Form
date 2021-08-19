@@ -1,0 +1,7 @@
+<h1 class="title">Multi Steps Dynamic Form</h1>
+
+<ng-container *ngIf="controlGroups.length">
+  <multisteps-form [controls]="controlGroups"
+    [bannerIcon]="bannerIcon"
+    (onSubmit)="onSubmit($event)"></multisteps-form>
+</ng-container>

@@ -1,0 +1,31 @@
+.confirmation-box {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  max-width: 420px;
+  min-height: 420px;
+  margin: 2rem auto;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 3rem rgba(#86A8E7, 0.3);
+  animation: fadeIn .4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  user-select: none;
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .2;
+  }
+
+  &__text {
+    position: relative;
+    color: #347be7;
+    font-size: 1.5rem;
+    z-index: 1;
+  }
+}

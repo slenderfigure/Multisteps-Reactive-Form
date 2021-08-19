@@ -1,0 +1,7 @@
+.form__error {
+  position: absolute;
+  padding: .3rem 0;
+  color: #fd3d57;
+  font-size: .72rem;
+  transition: opacity .3s cubic-bezier(0.16, 1, 0.3, 1);
+}

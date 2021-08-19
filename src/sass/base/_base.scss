@@ -1,0 +1,25 @@
+html, body {
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Noto Sans JP', Arial, Helvetica, sans-serif;
+  font-size: .9rem;
+  box-sizing: border-box;
+
+  &.active-menu {
+    overflow: hidden;
+  }
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+button:disabled {
+  opacity: .7;
+  cursor: default;
+  box-shadow: none !important;
+}

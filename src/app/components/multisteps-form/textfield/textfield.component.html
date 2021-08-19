@@ -1,0 +1,22 @@
+<ng-container [formGroup]="form">
+  <ng-container [formArrayName]="arrayName">
+    <ng-container [ngSwitch]="control.textfieldType"
+      [formGroupName]="groupName">
+      <input *ngSwitchCase="'number'"
+        class="form__control"
+        [class.invalid]="control.invalid && (control.dirty && control.touched)"
+        type="number"
+        [formControlName]="control.key" 
+        [id]="control.key"
+        [placeholder]="control.label">
+    
+      <input *ngSwitchDefault
+        class="form__control"
+        [class.invalid]="control.invalid && (control.dirty && control.touched)"
+        [formControlName]="control.key" 
+        [type]="control.textfieldType"
+        [id]="control.key"
+        [placeholder]="control.label">
+    </ng-container>
+  </ng-container>
+</ng-container>

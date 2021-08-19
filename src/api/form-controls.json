@@ -1,0 +1,202 @@
+[
+  [
+    {
+      "order": 1,
+      "key": "firstName",
+      "label": "First name",
+      "controlType": "textfield",
+      "validators": [
+        {
+          "type": "REQUIRED",
+          "message": "Please enter your first name"
+        }, 
+        {
+          "type": "MINLENGTH",
+          "message": "Cannot be less than 2 characters long",
+          "data": { "value": 2 }
+        }
+      ]
+    }, 
+    {
+      "order": 2,
+      "key": "lastName",
+      "label": "Last name",
+      "controlType": "textfield",
+      "validators": [
+        {
+          "type": "REQUIRED",
+          "message": "Please enter your last name"
+        }, 
+        {
+          "type": "MINLENGTH",
+          "message": "Cannot be less than 2 characters long",
+          "data": { "value": 2 }
+        }
+      ]
+    }, 
+    {
+      "order": 3,
+      "key": "age",
+      "label": "Age",
+      "controlType": "textfield",
+      "validators": [
+        {
+          "type": "MIN",
+          "message": "You must be 18+ years old to proceed",
+          "data": { "value": 18 }
+        }, 
+        {
+          "type": "MAX",
+          "message": "This age is suspcious",
+          "data": { "value": 120 }
+        }
+      ],
+      "textfieldType": "number"
+    }, 
+    {
+      "order": 4,
+      "key": "gender",
+      "label": "Gender",
+      "controlType": "dropdown",
+      "validators": [
+        {
+          "type": "REQUIRED",
+          "message": "Please select your gender"
+        }
+      ],
+      "dropdownOptions": [
+        {
+          "value": null,
+          "key": "Choose an option"
+        }, 
+        {
+          "value": "male",
+          "key": "Male"
+        }, 
+        {
+          "value": "female",
+          "key": "Female"
+        }, 
+        {
+          "value": "other",
+          "key": "lol"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "order": 1,
+      "key": "phone",
+      "label": "Phone",
+      "controlType": "textfield",
+      "validators": [
+        {
+          "type": "REQUIRED",
+          "message": "Please enter your phone number"
+        }, 
+        {
+          "type": "PHONE",
+          "message": "Enter a valid phone number"
+        }
+      ]
+    }, 
+    {
+      "order": 2,
+      "key": "phone2",
+      "label": "Phone (2)",
+      "controlType": "textfield",
+      "validators": [
+        {
+          "type": "PHONE",
+          "message": "Enter a valid phone number"
+        }
+      ]
+    }, 
+    {
+      "order": 3,
+      "key": "email",
+      "label": "Email",
+      "controlType": "textfield",
+      "validators": [
+        {
+          "type": "REQUIRED",
+          "message": "Please enter your email"
+        }, 
+        {
+          "type": "EMAIL",
+          "message": "Enter a valid email"
+        }, 
+        {
+          "type": "EMAILTAKEN",
+          "message": "This email is already taken",
+          "async": true
+        }
+      ],
+      "textfieldType": "email"
+    }
+  ],
+  [
+    {
+      "order": 1,
+      "key": "country",
+      "label": "Country",
+      "controlType": "dropdown",
+      "validators": [
+        {
+          "type": "REQUIRED",
+          "message": "Select your country"
+        }
+      ],
+      "dropdownOptions": [
+        {
+          "value": null,
+          "key": "Select your country"
+        }, 
+        {
+          "value": "us",
+          "key": "United States"
+        }, 
+        {
+          "value": "uk",
+          "key": "United Kingdom"
+        }, 
+        {
+          "value": "au",
+          "key": "Australia"
+        }, 
+        {
+          "value": "ca",
+          "key": "Canada"
+        },
+        {
+          "value": "do",
+          "key": "Dominican Republic"
+        }, 
+        {
+          "value": "jp",
+          "key": "Japan"
+        }
+      ]
+    }, 
+    {
+      "order": 2,
+      "key": "profession",
+      "label": "What do you do?",
+      "validators": [
+        {
+          "type": "REQUIRED",
+          "message": "Please enter your profession"
+        }
+      ],
+      "controlType": "textfield",
+      "textfieldType": "text"
+    }, 
+    {
+      "order": 3,
+      "key": "about",
+      "label": "About you",
+      "controlType": "textarea"
+    }
+  ]
+]

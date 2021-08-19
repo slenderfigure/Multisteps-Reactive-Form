@@ -1,0 +1,17 @@
+.form__control {
+  display: block;
+  width: 100%;
+  padding: .6rem .6rem;
+  border: 1px solid #eee;
+  border-radius: .6rem;
+  transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+  &:focus {
+    border-color: #86A8E7;
+  }
+
+  &.invalid {
+    border-color: rgba(253, 61, 87, 0.432);
+    background-color: rgba(253, 61, 87, 0.1);
+  }
+}

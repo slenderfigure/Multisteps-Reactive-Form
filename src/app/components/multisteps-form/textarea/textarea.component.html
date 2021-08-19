@@ -1,0 +1,11 @@
+<ng-container [formGroup]="form">
+  <ng-container [formArrayName]="arrayName">
+    <ng-container [formGroupName]="groupName">
+      <textarea class="form__control"
+        [class.invalid]="control.invalid && (control.dirty && control.touched)"
+        [formControlName]="control.key"
+        [id]="control.key">
+      </textarea>
+    </ng-container>
+  </ng-container>
+</ng-container>

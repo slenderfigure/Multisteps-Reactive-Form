@@ -1,0 +1,14 @@
+@keyframes fadeIn {
+  from {
+    visibility: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+}

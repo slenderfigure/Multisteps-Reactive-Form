@@ -1,0 +1,24 @@
+<section *ngIf="steps.length > 1" 
+  role="Display form progress"
+  class="form__header">
+  <span class="form__step-title">
+    Steps: {{ stepIndex + 1 }} / {{ steps.length }}
+  </span>
+
+  <div class="form__steps-indicator"
+    [style]="{
+      gridTemplateColumns: 'repeat('+ steps.length +', 1fr)'
+    }">
+    <button *ngFor="let step of steps.controls; let i=index"
+      (click)="onStepChanged(i)"
+      [ngClass]="{
+        current: stepIndex === i,
+        completed: steps.at(i).valid
+      }"
+      [disabled]="i !== stepIndex && steps.at(i).invalid"
+      [title]="(stepIndex > i && activeStep.valid) ? ('Step ' + (i + 1)) : ''"
+      class="indicator"
+      aria-label="Change form step"
+      type="button"></button>
+  </div>
+</section>

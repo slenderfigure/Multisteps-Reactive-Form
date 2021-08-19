@@ -1,0 +1,73 @@
+<div *ngIf="!completed; else confirmation" class="form-wrapper">
+  <figure class="form-banner" role="Form banner">
+    <img *ngIf="bannerIcon"
+      smooth-loader
+      [src]="bannerIcon" 
+      class="icon" 
+      alt="ilustration"
+      loading="lazy"
+      draggable="false">
+  </figure>
+
+  <ng-container *ngIf="controls.length && multistepsForm">
+    <form [formGroup]="multistepsForm" (ngSubmit)="onSubmit()"
+      class="form">
+      <app-steps-indicator [steps]="steps"
+        [activeStep]="activeStep"
+        [stepIndex]="stepIndex"
+        (stepChanged)="onNext($event)"></app-steps-indicator>
+
+      <ng-container formArrayName="steps">
+        <ng-container [formGroupName]="stepIndex">
+          <div *ngFor="let control of activeStepControls"
+            role="Form control group"
+            class="form__group">
+            <label [for]="control.key" class="form__label">
+              {{ control.label }}
+            </label>
+            
+            <ng-container [ngSwitch]="control.controlType">
+              <app-dropdown *ngSwitchCase="'dropdown'"
+                [form]="multistepsForm"
+                [arrayName]="'steps'"
+                [groupName]="stepIndex"
+                [control]="control"></app-dropdown>
+    
+              <app-textarea *ngSwitchCase="'textarea'"
+                [form]="multistepsForm"
+                [arrayName]="'steps'"
+                [groupName]="stepIndex"
+                [control]="control"></app-textarea>
+
+              <app-textfield *ngSwitchDefault
+                [form]="multistepsForm"
+                [arrayName]="'steps'"
+                [groupName]="stepIndex"
+                [control]="control"></app-textfield>
+            </ng-container>
+    
+            <app-error-message *ngIf="control.errorMessage"
+              [errorMessage]="control.errorMessage"></app-error-message>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <ng-container [ngSwitch]="true">
+        <button *ngSwitchCase="(stepIndex === steps.length - 1)"
+          [disabled]="multistepsForm.invalid"
+          type="submit"
+          class="form__submit-btn">Submit</button>
+
+        <button *ngSwitchDefault
+          (click)="onNext()"
+          [disabled]="activeStep.invalid"
+          type="button"
+          class="form__next-btn">Next Step &#8594;</button>
+      </ng-container>
+    </form>
+  </ng-container>
+</div>
+
+<ng-template #confirmation>
+  <app-completion-message></app-completion-message>
+</ng-template>

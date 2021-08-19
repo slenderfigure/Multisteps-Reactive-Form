@@ -1,0 +1,15 @@
+<ng-container [formGroup]="form">
+  <ng-container [formArrayName]="arrayName">
+    <ng-container [formGroupName]="groupName">
+      <select class="form__control"
+        [class.invalid]="control.invalid && (control.dirty && control.touched)"
+        [formControlName]="control.key"
+        [id]="control.key">
+      <option *ngFor="let option of control.dropdownOptions"
+        [ngValue]="option.value">
+        {{ option.key }}
+      </option>
+    </select>
+    </ng-container>
+  </ng-container>
+</ng-container>
